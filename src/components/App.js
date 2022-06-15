@@ -1,17 +1,16 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from './components/Login.js';
-import Notes from './components/Notes.js';
-
+import { Route, Routes } from "react-router-dom";
+import Login from './Login.js';
+import Notes from './Notes.js';
 
 function App () {
     return (
-        <BrowserRouter>
+        <div>
             <Routes>
                 <Route path='/' element={ <Login /> }/>
                 <Route path='/Notes' element={ <Notes /> }/>
             </Routes>
-        </BrowserRouter>
+        </div>
     );
 }
 

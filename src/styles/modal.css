@@ -1,7 +1,7 @@
-.addNote-btn {
+.modal-btn {
     display: flex;
     margin-left: 80%;
-    margin-top: 90%;
+    margin-top: 10%;
     font-size: 15px;
     border-radius: 100%;
 }

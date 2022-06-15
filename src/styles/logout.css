@@ -1,0 +1,10 @@
+@media (min-width: 760px) {
+.logout-btn {
+    display: flex;
+    margin-left: 87%;
+    margin-top: 2em;
+    padding: 5px;
+    font-size: 15px;
+    border: none;
+  }
+}

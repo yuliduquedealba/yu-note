@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js';
 import { Button } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
@@ -7,7 +6,7 @@ import { saveNotes } from '../firebase/firestore';
 import '../styles/modal.css'
 // import './notes.css'
 
-export default function Example({children}) {
+export default function MyModal({getNotes}) {
     const [show, setShow] = useState(false);
     const [form, setState] = useState({
       title: '',
@@ -20,15 +19,23 @@ export default function Example({children}) {
       ...form, //spread
       [e.target.name]: e.target.value
     });
+
     const printValues = e => {
       e.preventDefault();
       console.log(form.title, form.content);
     };
-    
+
+    const eventsSaveBtn = () => {
+      saveNotes(form.title, form.content).then((result) => {
+        console.log(result);
+        getNotes()
+        handleClose();
+      });
+    };
   
     return (
       <>
-        <Button className='addNote-btn' variant="primary" onClick={handleShow}>
+        <Button className='modal-btn' variant="primary" onClick={handleShow}>
           +
         </Button>
         
@@ -44,15 +51,14 @@ export default function Example({children}) {
                   value={form.title}
                   type="text"
                   name="title"
-                  placeholder="Receta crema de zanahorias"
+                  placeholder="Ingrese el texto"
                   onChange={updateField}
                   autoFocus
                 />
               </Form.Group>
               <Form.Group
                 className="mb-3"
-                controlId="exampleForm.ControlTextarea1"
-              >
+                controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Content</Form.Label>
                 <Form.Control as="textarea" rows={3} 
                 value={form.content}
@@ -66,12 +72,11 @@ export default function Example({children}) {
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary" onClick={() => {saveNotes(form.title, form.content)}}>
+            <Button variant="primary" onClick={eventsSaveBtn}>
               Save Changes
             </Button>
           </Modal.Footer>
         </Modal>
-            {children}
       </>
     );
   };

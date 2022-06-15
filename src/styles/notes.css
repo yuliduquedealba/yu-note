@@ -1,17 +1,14 @@
-
-.logout-btn {
-  display: flex;
-  margin-left: 87%;
-  margin-top: 2em;
-  padding: 5px;
-  font-size: 15px;
-  border: none;
-  background-color: #ffcc00;
-}
-
 .header{
   display: flex;
   justify-content: center;
   font-size: 40px;
   margin-top: 5%;
+}
+
+.container-note {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff0b2;
+  margin: 20px;
+  padding: 1em;
 }
